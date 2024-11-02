@@ -1,1 +1,17 @@
 
+///// KEEP THE CURENT service_worker_js
+///// Modify the method putInCache and add the `push` listener
+const putInCache = async (request, response) => {
+    try {
+        const cache = await caches.open(CACHE_VERSION);
+        await cache.put(request, response);
+    } catch (err) {
+        return;
+    }
+};
+
+self.addEventListener('push', (event) => {
+    var json = event.data.json();
+    event.waitUntil(self.registration.showNotification(json.title,
+        { body: json.body, icon: '{{ site.logo.url }}' }));
+});
