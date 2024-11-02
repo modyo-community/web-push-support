@@ -1,1 +1,16 @@
-
+if('{{ user }}' != '' && '{{ site.enable_push_notifications }}' == 'true'){
+        navigator.serviceWorker.ready.then((registration) => {
+            registration.pushManager
+                .subscribe({
+                    userVisibleOnly: true,
+                    applicationServerKey: '{{ site.vapid_public_key }}'
+                })
+                .then((subscription) => {
+                    fetch('{{ site.push_subscription_url }}', {
+                        method: 'POST',
+                        body: JSON.stringify(subscription),
+                        headers: { 'Content-Type': 'application/json'}
+                    });
+                });
+        });
+    }
