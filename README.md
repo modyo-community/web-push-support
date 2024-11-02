@@ -9,7 +9,7 @@ If your site was created using older versions of Modyo ( 10.0 or lower) you may 
 - Verify thay your web app has PWA support enabled
 
 ## More information
-See modyo documentation
+See Modyo documentation
 
 - [PWA configuration](https://docs.modyo.com/en/platform/channels/sites.html#pwa)
 - [Web Push Notifications](https://docs.modyo.com/en/platform/customers/messaging.html)
